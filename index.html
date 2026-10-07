@@ -184,50 +184,126 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
 .reveal.show{opacity:1;transform:none}
 </style>
-<!-- ================= 1. STUDENT MOMENTS & PHOTOS ================= -->
-<section style="background-color: #ffffff; padding: 40px 20px; font-family: Arial, sans-serif; text-align: center;">
-  <h2 style="color: #333333; margin-bottom: 8px; font-size: 24px;">Classroom & Student Meetings</h2>
-  <p style="color: #666666; margin-bottom: 30px; font-size: 14px;">Glimpses of our daily classes and interactive student sessions.</p>
 
-  <!-- Photo Grid -->
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 900px; margin: 0 auto;">
+<!-- ================= ADMIN UPLOAD & REVIEW SECTION ================= -->
+<section style="background-color: #f8f9fa; padding: 40px 20px; font-family: Arial, sans-serif; text-align: center; border-top: 2px solid #e0e0e0;">
+  
+  <!-- 1. ADMIN ONLY - PHOTO / VIDEO UPLOAD -->
+  <div style="max-width: 500px; margin: 0 auto 30px auto; padding: 20px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: left; border: 2px solid #007bff;">
+    <h3 style="margin-top:0; color:#007bff;">🔒 Admin Only: Upload Photo/Video</h3>
+    <p style="font-size: 13px; color: #666;">Sirf aap apni photo/video select karke upload kar sakte hain:</p>
     
-    <!-- Class Photo Card -->
-    <div style="flex: 1 1 280px; max-width: 350px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-      <img src="class.jpg" alt="Class Session" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-      <div style="padding: 15px; text-align: left;">
-        <h4 style="margin: 0 0 5px 0; color: #222222; font-size: 16px;">Classroom Learning</h4>
-        <p style="margin: 0; color: #666666; font-size: 13px;">Interactive learning and doubt solving sessions with students.</p>
-      </div>
-    </div>
-
-    <!-- Meeting Photo Card -->
-    <div style="flex: 1 1 280px; max-width: 350px; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
-      <img src="meeting.jpg" alt="Student Meeting" style="width: 100%; height: 220px; object-fit: cover; display: block;">
-      <div style="padding: 15px; text-align: left;">
-        <h4 style="margin: 0 0 5px 0; color: #222222; font-size: 16px;">Student Discussion & Meeting</h4>
-        <p style="margin: 0; color: #666666; font-size: 13px;">Group discussions, guidance, and project planning meetings.</p>
-      </div>
-    </div>
-
+    <input type="file" id="adminMediaUpload" accept="image/*,video/*" style="width:100%; margin-bottom:12px; padding:8px; border:1px solid #ddd; border-radius:5px;">
+    
+    <button onclick="adminUploadMedia()" style="width: 100%; background: #007bff; color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">
+      Upload Media (Password Required)
+    </button>
   </div>
+
+  <!-- Live Uploaded Media Gallery -->
+  <h3 style="color:#333; margin-top: 20px;">Photos & Class Moments</h3>
+  <div id="adminGallery" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 0 auto 40px auto;">
+    <!-- Uploaded photos yahan dikhenge -->
+  </div>
+
+
+  <!-- 2. PUBLIC REVIEW FORM (Sabhi ke liye) -->
+  <div style="max-width: 500px; margin: 0 auto; padding: 25px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: left;">
+    <h3 style="margin-top:0; color:#333;">⭐ Leave a Review</h3>
+    
+    <label style="font-size: 14px; font-weight: bold; color: #555;">Name:</label>
+    <input type="text" id="reviewerName" placeholder="Aapka Naam" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+
+    <label style="font-size: 14px; font-weight: bold; color: #555;">Rating:</label>
+    <select id="reviewerRating" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px;">
+      <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+      <option value="4">⭐⭐⭐⭐ (4/5)</option>
+      <option value="3">⭐⭐⭐ (3/5)</option>
+      <option value="2">⭐⭐ (2/5)</option>
+      <option value="1">⭐ (1/5)</option>
+    </select>
+
+    <label style="font-size: 14px; font-weight: bold; color: #555;">Your Review / Experience:</label>
+    <textarea id="reviewerText" placeholder="Yahan apna review likhein..." rows="4" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"></textarea>
+
+    <button onclick="addPublicReview()" style="width: 100%; background: #28a745; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer;">
+      Submit Review
+    </button>
+  </div>
+
+  <!-- Reviews List -->
+  <div id="publicReviewsContainer" style="max-width: 500px; margin: 25px auto 0 auto; text-align: left;">
+    <!-- Dynamic Reviews Yahan Dikhnege -->
+  </div>
+
 </section>
 
-<!-- ================= 2. CLIENT / STUDENT REVIEWS ================= -->
-<section style="background-color: #f9f9f9; padding: 40px 20px; font-family: Arial, sans-serif; text-align: center; border-top: 1px solid #e0e0e0;">
-  <h2 style="color: #333333; margin-bottom: 25px; font-size: 24px;">Student & Client Feedback</h2>
+<!-- SCRIPT FOR PASSWORD & UPLOAD FUNCTIONALITY -->
+<script>
+  // YOUR SECRET ADMIN PASSWORD
+  const ADMIN_PASSWORD = "Anas143@"; 
 
-  <!-- Review Card -->
-  <div style="max-width: 500px; margin: 0 auto; padding: 25px; background-color: #ffffff; border: 1px solid #dddddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); text-align: left;">
-    <div style="color: #ffc107; font-size: 22px; margin-bottom: 12px;">★★★★★</div>
-    <p style="font-size: 16px; color: #555555; line-height: 1.6; margin-bottom: 15px;">
-      "Classes and guidance are excellent! Highly satisfied with the overall experience."
-    </p>
-    <div style="font-size: 14px; font-weight: bold; color: #222222;">
-      - Student Review <span style="font-weight: normal; color: #777777;">(Verified)</span>
-    </div>
-  </div>
-</section>
+  // Admin Only Upload Function
+  function adminUploadMedia() {
+    const enteredPassword = prompt("Admin Security Password daalein photo upload karne ke liye:");
+
+    if (enteredPassword !== ADMIN_PASSWORD) {
+      alert("Galat Password! Aap photo upload nahi kar sakte.");
+      return;
+    }
+
+    const fileInput = document.getElementById('adminMediaUpload');
+    const gallery = document.getElementById('adminGallery');
+    const file = fileInput.files[0];
+
+    if (!file) {
+      alert("Pehle koi photo ya video select karein!");
+      return;
+    }
+
+    const fileURL = URL.createObjectURL(file);
+    const card = document.createElement('div');
+    card.style.cssText = "width: 260px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);";
+
+    if (file.type.startsWith('image/')) {
+      card.innerHTML = `<img src="${fileURL}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 5px;">`;
+    } else if (file.type.startsWith('video/')) {
+      card.innerHTML = `<video controls style="width: 100%; height: 180px; border-radius: 5px;"><source src="${fileURL}"></video>`;
+    }
+
+    gallery.appendChild(card);
+    fileInput.value = '';
+    alert("Photo/Video Safaltapoorvak Upload Ho Gayi!");
+  }
+
+  // Public Review Function
+  function addPublicReview() {
+    const name = document.getElementById('reviewerName').value;
+    const rating = document.getElementById('reviewerRating').value;
+    const text = document.getElementById('reviewerText').value;
+
+    if (!name || !text) {
+      alert("Kripya Naam aur Review dono bharein!");
+      return;
+    }
+
+    const container = document.getElementById('publicReviewsContainer');
+    const reviewCard = document.createElement('div');
+    reviewCard.style.cssText = "background: #fff; border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);";
+    
+    reviewCard.innerHTML = `
+      <div style="color: #ffc107; font-size: 18px; margin-bottom: 5px;">${"★".repeat(rating)}</div>
+      <p style="margin: 0 0 8px 0; color: #444; font-size: 14px;">"${text}"</p>
+      <small style="color: #777; font-weight: bold;">- ${name}</small>
+    `;
+
+    container.prepend(reviewCard);
+
+    document.getElementById('reviewerName').value = '';
+    document.getElementById('reviewerText').value = '';
+  }
+</script>
+
 
 </body>
 </html>
