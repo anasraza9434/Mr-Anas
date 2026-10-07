@@ -185,37 +185,38 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
 .reveal.show{opacity:1;transform:none}
 </style>
 
-<!-- ================= ADMIN UPLOAD & REVIEW SECTION ================= -->
-<section style="background-color: #f8f9fa; padding: 40px 20px; font-family: Arial, sans-serif; text-align: center; border-top: 2px solid #e0e0e0;">
+    
+<!-- ================= DARK THEME ADMIN UPLOAD & REVIEW SECTION ================= -->
+<section style="background-color: #0a0a0a; padding: 40px 20px; font-family: Arial, sans-serif; text-align: center; color: #ffffff; border-top: 1px solid #222222;">
   
-  <!-- 1. ADMIN ONLY - PHOTO / VIDEO UPLOAD -->
-  <div style="max-width: 500px; margin: 0 auto 30px auto; padding: 20px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: left; border: 2px solid #007bff;">
-    <h3 style="margin-top:0; color:#007bff;">🔒 Admin Only: Upload Photo/Video</h3>
-    <p style="font-size: 13px; color: #666;">Sirf aap apni photo/video select karke upload kar sakte hain:</p>
+  <!-- 1. ADMIN ONLY - PHOTO / VIDEO UPLOAD (Dark Card) -->
+  <div style="max-width: 500px; margin: 0 auto 30px auto; padding: 22px; background: #121212; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; border: 1px solid #d4af37;">
+    <h3 style="margin-top:0; color: #d4af37; font-size: 18px;">🔒 Admin Only: Upload Photo/Video</h3>
+    <p style="font-size: 13px; color: #aaaaaa; margin-bottom: 15px;">Sirf aap apni photo/video select karke upload kar sakte hain:</p>
     
-    <input type="file" id="adminMediaUpload" accept="image/*,video/*" style="width:100%; margin-bottom:12px; padding:8px; border:1px solid #ddd; border-radius:5px;">
+    <input type="file" id="adminMediaUpload" accept="image/*,video/*" style="width:100%; margin-bottom:15px; padding:10px; background: #1a1a1a; color: #ffffff; border:1px solid #333333; border-radius:6px; box-sizing: border-box;">
     
-    <button onclick="adminUploadMedia()" style="width: 100%; background: #007bff; color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">
+    <button onclick="adminUploadMedia()" style="width: 100%; background: linear-gradient(135deg, #d4af37, #aa8c2c); color: #000000; border: none; padding: 12px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 15px;">
       Upload Media (Password Required)
     </button>
   </div>
 
   <!-- Live Uploaded Media Gallery -->
-  <h3 style="color:#333; margin-top: 20px;">Photos & Class Moments</h3>
+  <h3 style="color: #d4af37; margin-top: 30px; font-size: 20px;">Photos & Class Moments</h3>
   <div id="adminGallery" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 0 auto 40px auto;">
     <!-- Uploaded photos yahan dikhenge -->
   </div>
 
 
-  <!-- 2. PUBLIC REVIEW FORM (Sabhi ke liye) -->
-  <div style="max-width: 500px; margin: 0 auto; padding: 25px; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); text-align: left;">
-    <h3 style="margin-top:0; color:#333;">⭐ Leave a Review</h3>
+  <!-- 2. PUBLIC REVIEW FORM (Dark Card) -->
+  <div style="max-width: 500px; margin: 0 auto; padding: 25px; background: #121212; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-align: left; border: 1px solid #222222;">
+    <h3 style="margin-top:0; color: #d4af37; font-size: 20px;">⭐ Leave a Review</h3>
     
-    <label style="font-size: 14px; font-weight: bold; color: #555;">Name:</label>
-    <input type="text" id="reviewerName" placeholder="Aapka Naam" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+    <label style="font-size: 13px; font-weight: bold; color: #cccccc; display: block; margin-top: 10px;">Name:</label>
+    <input type="text" id="reviewerName" placeholder="Aapka Naam" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; background: #1a1a1a; color: #ffffff; border: 1px solid #333333; border-radius: 6px; box-sizing: border-box;">
 
-    <label style="font-size: 14px; font-weight: bold; color: #555;">Rating:</label>
-    <select id="reviewerRating" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px;">
+    <label style="font-size: 13px; font-weight: bold; color: #cccccc; display: block;">Rating:</label>
+    <select id="reviewerRating" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; background: #1a1a1a; color: #ffc107; border: 1px solid #333333; border-radius: 6px; box-sizing: border-box;">
       <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
       <option value="4">⭐⭐⭐⭐ (4/5)</option>
       <option value="3">⭐⭐⭐ (3/5)</option>
@@ -223,10 +224,10 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
       <option value="1">⭐ (1/5)</option>
     </select>
 
-    <label style="font-size: 14px; font-weight: bold; color: #555;">Your Review / Experience:</label>
-    <textarea id="reviewerText" placeholder="Yahan apna review likhein..." rows="4" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"></textarea>
+    <label style="font-size: 13px; font-weight: bold; color: #cccccc; display: block;">Your Review / Experience:</label>
+    <textarea id="reviewerText" placeholder="Yahan apna review likhein..." rows="4" style="width: 100%; padding: 10px; margin: 5px 0 15px 0; background: #1a1a1a; color: #ffffff; border: 1px solid #333333; border-radius: 6px; box-sizing: border-box;"></textarea>
 
-    <button onclick="addPublicReview()" style="width: 100%; background: #28a745; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer;">
+    <button onclick="addPublicReview()" style="width: 100%; background: #d4af37; color: #000000; border: none; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer;">
       Submit Review
     </button>
   </div>
@@ -263,7 +264,7 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
 
     const fileURL = URL.createObjectURL(file);
     const card = document.createElement('div');
-    card.style.cssText = "width: 260px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);";
+    card.style.cssText = "width: 260px; border: 1px solid #333333; border-radius: 8px; overflow: hidden; background: #121212; padding: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);";
 
     if (file.type.startsWith('image/')) {
       card.innerHTML = `<img src="${fileURL}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 5px;">`;
@@ -289,12 +290,12 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
 
     const container = document.getElementById('publicReviewsContainer');
     const reviewCard = document.createElement('div');
-    reviewCard.style.cssText = "background: #fff; border: 1px solid #e0e0e0; padding: 15px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);";
+    reviewCard.style.cssText = "background: #121212; border: 1px solid #333333; padding: 15px; border-radius: 8px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);";
     
     reviewCard.innerHTML = `
       <div style="color: #ffc107; font-size: 18px; margin-bottom: 5px;">${"★".repeat(rating)}</div>
-      <p style="margin: 0 0 8px 0; color: #444; font-size: 14px;">"${text}"</p>
-      <small style="color: #777; font-weight: bold;">- ${name}</small>
+      <p style="margin: 0 0 8px 0; color: #dddddd; font-size: 14px;">"${text}"</p>
+      <small style="color: #d4af37; font-weight: bold;">- ${name}</small>
     `;
 
     container.prepend(reviewCard);
@@ -303,7 +304,6 @@ document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('r
     document.getElementById('reviewerText').value = '';
   }
 </script>
-
 
 </body>
 </html>
