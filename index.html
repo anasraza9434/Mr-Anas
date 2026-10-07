@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MR ANAS — ICT × SMC Trading</title>
+<meta name="description" content="MR ANAS ICT × SMC Trading Learning — practical market structure, liquidity, risk management and trading psychology.">
+<style>
+:root{--bg:#050505;--card:#0d0d0f;--gold:#d9ad4c;--gold2:#ffe29a;--muted:#a7a7ad;--line:#242428;--white:#f7f7f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#3b2b0b22,transparent 30%),var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 18px}
+header{position:sticky;top:0;z-index:20;background:#050505d9;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff10}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:1.5px}.brand span{color:var(--gold)}
+.dots{font-size:28px;width:44px;height:44px;border:1px solid #ffffff18;border-radius:13px;background:#111;display:grid;place-items:center;cursor:pointer;color:var(--gold)}
+.menu{display:none;position:absolute;right:18px;top:60px;width:min(340px,calc(100vw - 36px));background:#0d0d0f;border:1px solid #ffffff15;border-radius:18px;padding:18px;box-shadow:0 20px 70px #000}
+.menu.open{display:block}.menu h3{margin:0 0 10px;color:var(--gold2)}.menu p{margin:8px 0;color:#c9c9cc;line-height:1.55;font-size:14px}.menu .tag{display:inline-block;padding:7px 10px;border:1px solid #8f6c241f;border-radius:999px;color:var(--gold2);margin:4px 4px 0 0;font-size:12px}
+.hero{padding:72px 0 45px;text-align:center}.eyebrow{display:inline-block;border:1px solid #c99b3b55;background:#c99b3b0e;color:var(--gold2);padding:8px 13px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.8px}
+h1{font-size:clamp(42px,8vw,82px);line-height:.95;margin:18px 0 16px;letter-spacing:-3px}.gold{background:linear-gradient(90deg,#fff0b0,var(--gold),#fff0b0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:720px;margin:0 auto;color:#b8b8bd;line-height:1.7;font-size:17px}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:14px 20px;border-radius:12px;font-weight:850;border:1px solid #ffffff18;background:#121214}.primary{background:linear-gradient(135deg,#ffe39a,#b88625);color:#111;border:0}
+.ticker{margin:25px auto 0;max-width:1000px;border:1px solid #ffffff10;background:#0b0b0c;border-radius:18px;padding:14px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;color:#c8c8cc;font-size:13px}.ticker b{color:var(--gold2)}
+section{padding:48px 0}.title{text-align:center;margin-bottom:28px}.title h2{font-size:32px;margin:0 0 8px}.title p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,#111113,#09090a);border:1px solid #ffffff12;border-radius:22px;padding:24px;position:relative;overflow:hidden}.card.featured{border-color:#b8872d88;box-shadow:0 0 45px #a8751b14}.badge{position:absolute;right:16px;top:16px;color:#111;background:var(--gold2);font-size:10px;font-weight:900;padding:6px 9px;border-radius:999px}.price{font-size:42px;font-weight:950;margin:14px 0 5px}.duration{color:var(--gold2);font-weight:800}.card ul{padding-left:18px;color:#c4c4c9;line-height:1.8;min-height:150px}.card li::marker{color:var(--gold)}.buy{display:block;text-align:center;padding:13px;border-radius:12px;background:#171719;border:1px solid #ffffff16;font-weight:900}.buy:hover{background:#201a0d}
+.full{margin-top:16px}.full .price{font-size:46px}.fullgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.panel{background:#0d0d0f;border:1px solid #ffffff12;border-radius:22px;padding:25px}.panel h3{margin-top:0;color:var(--gold2)}.topics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.topic{padding:13px;border:1px solid #ffffff0f;border-radius:12px;background:#111114;color:#d0d0d4;font-size:14px}
+.note{font-size:12px;color:#8f8f96;line-height:1.6;margin-top:12px}
+.social{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.social a{padding:14px 8px;text-align:center;border:1px solid #ffffff12;background:#0d0d0f;border-radius:14px;font-weight:800;font-size:13px}.social a:hover{border-color:#b8872d77;color:var(--gold2)}
+.payment{display:grid;grid-template-columns:1fr 1fr;gap:18px}.upi{font-size:20px;color:var(--gold2);font-weight:900;word-break:break-all}.cash{border:1px solid #b8872d55;background:#b8872d0c}.cash strong{color:var(--gold2)}
+footer{border-top:1px solid #ffffff10;padding:30px 0 50px;color:#777;text-align:center;font-size:12px}
+@media(max-width:800px){.cards,.fullgrid,.payment{grid-template-columns:1fr}.social{grid-template-columns:1fr 1fr}.hero{padding-top:52px}h1{letter-spacing:-2px}.topics{grid-template-columns:1fr}}
+
+/* ===== PREMIUM UI UPGRADE ===== */
+:root{
+  --bg:#050505;--card:#0c0c0f;--card2:#111116;--gold:#d9ad4c;--gold2:#ffe39a;
+  --muted:#a7a7ad;--line:#ffffff14;--white:#fafafa;--green:#25d366;
+}
+body{
+  background:
+    radial-gradient(circle at 15% 5%,rgba(217,173,76,.12),transparent 26%),
+    radial-gradient(circle at 90% 20%,rgba(255,227,154,.07),transparent 22%),
+    linear-gradient(180deg,#050505 0%,#080808 48%,#050505 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;
+  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:60px 60px;mask-image:linear-gradient(to bottom,#000,transparent 80%);
+}
+header{
+  background:rgba(5,5,5,.78);border-bottom:1px solid rgba(255,255,255,.09);
+  box-shadow:0 10px 35px rgba(0,0,0,.18);
+}
+.brand{font-size:15px}
+.dots{transition:.25s;box-shadow:inset 0 0 0 1px rgba(217,173,76,.05)}
+.dots:hover{transform:translateY(-2px);border-color:#d9ad4c66;background:#17140d}
+.menu{backdrop-filter:blur(22px);box-shadow:0 25px 80px #000}
+.hero{padding:92px 0 54px;position:relative}
+.hero:after{
+  content:"";position:absolute;width:520px;height:220px;left:50%;top:80px;
+  transform:translateX(-50%);background:rgba(217,173,76,.10);filter:blur(90px);
+  pointer-events:none;z-index:-1;
+}
+.eyebrow{box-shadow:0 0 30px rgba(217,173,76,.08)}
+h1{font-weight:950;text-shadow:0 12px 45px rgba(0,0,0,.5)}
+.hero p{font-size:18px}
+.actions .btn,.buy{transition:transform .2s,box-shadow .2s,border-color .2s}
+.actions .btn:hover,.buy:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.primary{box-shadow:0 8px 30px rgba(217,173,76,.16)}
+.ticker{box-shadow:0 20px 60px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
+.title h2{font-weight:900}
+.card,.panel{
+  background:linear-gradient(145deg,rgba(20,20,23,.96),rgba(8,8,10,.96));
+  box-shadow:0 18px 55px rgba(0,0,0,.18);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.card:hover,.panel:hover{
+  transform:translateY(-5px);border-color:rgba(217,173,76,.34);
+  box-shadow:0 22px 70px rgba(0,0,0,.3);
+}
+.card.featured{box-shadow:0 0 0 1px rgba(217,173,76,.12),0 24px 80px rgba(168,117,27,.12)}
+.badge{box-shadow:0 6px 20px rgba(217,173,76,.16)}
+.price{letter-spacing:-1px}
+.full{position:relative;overflow:hidden}
+.full:before{
+  content:"";position:absolute;width:180px;height:180px;right:-60px;top:-70px;
+  background:rgba(217,173,76,.08);filter:blur(40px);border-radius:50%;
+}
+.topic{transition:.2s}
+.topic:hover{border-color:#d9ad4c55;transform:translateX(2px);color:var(--gold2)}
+.social a{transition:.2s;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.social a:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,0,0,.3)}
+.upi{padding:13px 14px;background:#080808;border:1px solid #d9ad4c33;border-radius:12px}
+footer{background:#040404}
+@media(max-width:800px){
+  .hero{padding-top:68px}
+  .hero p{font-size:16px}
+  .card:hover,.panel:hover{transform:none}
+}
+
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<div class="brand">MR <span>ANAS</span> • ICT × SMC</div>
+<div style="position:relative">
+<button class="dots" onclick="document.getElementById('menu').classList.toggle('open')" aria-label="Menu">⋮</button>
+<div id="menu" class="menu">
+<h3>MR ANAS — Trading Profile</h3>
+<p><b>Trading focus:</b> ICT × SMC concepts, market structure, liquidity, price action, risk management & disciplined execution.</p>
+<p><b>Experience:</b> 3+ years of learning, chart study and market experience. The goal is to teach a structured process — not sell guaranteed profits.</p>
+<p><b>What I teach:</b></p>
+<span class="tag">Liquidity</span><span class="tag">BOS / CHOCH</span><span class="tag">Fair Value Gap</span><span class="tag">Order Blocks</span><span class="tag">Killzones</span><span class="tag">Risk Management</span><span class="tag">Psychology</span><span class="tag">Journaling</span>
+</div></div>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="eyebrow">ICT × SMC • LEARN • PRACTICE • EXECUTE</div>
+<h1>Trade With <span class="gold">Structure.</span><br>Not Emotion.</h1>
+<p>MR ANAS ke saath ICT × SMC trading concepts ko simple aur practical way mein samjho — chart reading, liquidity, entries, risk management aur trading psychology ke saath.</p>
+<div class="actions">
+<a class="btn primary" href="#courses">Start Learning →</a>
+<a class="btn" href="https://wa.me/916205160135" target="_blank">WhatsApp Me</a>
+</div>
+<div class="ticker"><span>GOLD <b>XAUUSD</b></span><span>BTC <b>BTCUSD</b></span><span>SMC <b>PRICE ACTION</b></span><span>RISK <b>DISCIPLINE</b></span></div>
+</div>
+</section>
+
+<section id="courses"><div class="wrap">
+<div class="title"><h2>Choose Your <span class="gold">Learning Plan</span></h2><p>₹99, ₹199 aur ₹299 plans mein live Google Meet classes + WhatsApp support.</p></div>
+<div class="cards">
+<article class="card"><div class="duration">LIVE GOOGLE MEET CLASS</div><div class="price">₹99</div><ul><li>Live Google Meet class</li><li>ICT × SMC basics</li><li>Market structure & liquidity</li><li>Live Q&A + WhatsApp support</li></ul><a class="buy" href="https://payments.cashfree.com/links?code=Ab4daf0cmf6g_AAAAAAAWR5s" target="_blank">Join Live Class ₹99</a></article>
+<article class="card featured"><span class="badge">POPULAR</span><div class="duration">2 DAYS • LIVE GOOGLE MEET</div><div class="price">₹199</div><ul><li>2 live Google Meet classes</li><li>BOS / CHOCH, FVG, OB</li><li>Entries & confirmations</li><li>Live Q&A + WhatsApp support</li></ul><a class="buy" href="https://payments.cashfree.com/links?code=gb4dh59tfqpg_AAAAAAAWR5s" target="_blank">Join for ₹199</a></article>
+<article class="card"><div class="duration">3 DAYS • LIVE GOOGLE MEET</div><div class="price">₹299</div><ul><li>3 live Google Meet classes</li><li>Risk management</li><li>Psychology & execution</li><li>Live Q&A + WhatsApp support</li></ul><a class="buy" href="https://payments.cashfree.com/links?code=Ob4dh70nkf6g_AAAAAAAWR5s" target="_blank">Join for ₹299</a></article>
+</div>
+<div class="card full"><div class="duration">FULL ICT × SMC COURSE</div><div class="price">₹2,999</div><p style="color:#bdbdc2">Deep learning path for traders who want a complete structured framework from basics to execution.</p><div class="actions" style="justify-content:flex-start"><a class="btn primary" href="https://payments.cashfree.com/links/kb4dh983fe50_AAAAAAAWR5s" target="_blank">Join Full Course →</a></div></div>
+</div></section>
+
+<section><div class="wrap fullgrid">
+<div class="panel"><h3>Course Curriculum</h3><div class="topics">
+<div class="topic">Market Structure</div><div class="topic">Liquidity & Sweeps</div><div class="topic">BOS / CHOCH</div><div class="topic">Fair Value Gap</div><div class="topic">Order Blocks</div><div class="topic">Premium / Discount</div><div class="topic">Killzones / Sessions</div><div class="topic">Entry Models</div><div class="topic">Risk Management</div><div class="topic">Trading Psychology</div><div class="topic">Backtesting</div><div class="topic">Trading Journal</div>
+</div></div>
+<div class="panel"><h3>WhatsApp Access</h3><p style="color:#c5c5c9;line-height:1.7">Course lene ke baad WhatsApp par guidance/access diya jayega. Payment ke baad apna payment proof aur details WhatsApp par share kar sakte ho.</p><a class="btn primary" style="display:inline-block" href="https://wa.me/916205160135" target="_blank">Open WhatsApp →</a><p class="note">Access, support aur learning material plan ke according provide kiya jayega.</p></div>
+</div></section>
+
+<section><div class="wrap">
+<div class="title"><h2>Payment <span class="gold">Process</span></h2><p>Simple checkout + order notification setup.</p></div>
+<div class="panel" style="grid-column:1/-1;text-align:center;border-color:#d9ad4c55;background:linear-gradient(135deg,#171207,#0c0c0e)"><h3 style="margin-bottom:8px">🎥 ₹99 — LIVE GOOGLE MEET CLASS</h3><p style="color:#d0d0d4;line-height:1.7;margin:0">Payment ke baad Google Meet class ki details WhatsApp par share ki jayengi.</p></div>
+  <div class="payment">
+<div class="panel cash"><h3>Cashfree</h3><p style="color:#c7c7ca;line-height:1.7"><strong>Cashfree payment</strong> connect hone ke baad successful payment ka notification/order event website ke backend/webhook se handle kiya ja sakta hai.</p><p class="note">Important: Cashfree secret/API keys HTML mein nahi daalne chahiye. Payment ke baad tumhari email par order details bhejne ke liye backend/webhook email setup required hai.</p></div>
+<div class="panel"><h3>UPI</h3><div class="upi">6205160135-2@ibl</div><p class="note">Agar direct UPI payment use karte ho to payment ke baad WhatsApp par screenshot + course name bhejo.</p><a class="btn" href="https://wa.me/916205160135?text=Payment%20done%20hai.%20Course%3A%20" target="_blank">Send Payment Proof →</a></div>
+</div></div></section>
+
+<section><div class="wrap">
+<div class="title"><h2>Connect With <span class="gold">MR ANAS</span></h2><p>Trading content, community aur direct support.</p></div>
+<div class="social">
+<a href="https://www.instagram.com/btc_xauusd07?stkn=MTg0c2ZjYmw2d2toYg==" target="_blank">Instagram</a>
+<a href="https://youtube.com/@tradermranas?si=bKoSopo0psIyGxHK" target="_blank">YouTube</a>
+<a href="https://t.me/+1jmFK__svH80ZDNl" target="_blank">Telegram</a>
+<a href="https://chat.whatsapp.com/FlCQNSkeMHwAIDdfLw36Ff" target="_blank">WhatsApp Group</a>
+<a href="https://wa.me/916205160135" target="_blank">Direct WhatsApp</a>
+</div>
+</div></section>
+
+<section><div class="wrap"><div class="panel" style="text-align:center"><h3>⚠️ Risk Disclaimer</h3><p class="note" style="max-width:760px;margin:auto">Trading mein risk hota hai. Ye website/course guaranteed profit, fixed returns ya guaranteed funded-account success promise nahi karta. Har trader ko apni risk capacity ke hisaab se decision lena chahiye.</p></div></div></section>
+</main>
+<footer>© 2026 MR ANAS • ICT × SMC Trading • Learn. Practice. Execute.</footer>
+
+<a href="https://wa.me/916205160135" target="_blank" aria-label="WhatsApp" style="
+position:fixed;right:18px;bottom:18px;z-index:50;width:54px;height:54px;border-radius:50%;
+display:grid;place-items:center;background:#25d366;color:#fff;font-size:24px;
+box-shadow:0 10px 35px rgba(37,211,102,.28);font-weight:900;">⌕</a>
+
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}
+}),{threshold:.08});
+document.querySelectorAll('section,.card,.panel').forEach(e=>{e.classList.add('reveal');io.observe(e)});
+</script>
+<style>
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.show{opacity:1;transform:none}
+</style>
+
+</body>
+</html>
